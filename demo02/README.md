@@ -15,11 +15,10 @@ Para correr el proyecto puede realizarlo utilizando docker a través de docker-c
 
 Se desplegarán en contenedores cada componente de la arquitectura, los cuales son:
 
-    http://localhost:80 <- Frontend (Angular 8)
-    http://localhost:9000/api <- API Gateway (.NET Core 3.0)
+    http://localhost:9000/api <- API Gateway (.NET 6.0)
     http://localhost:8500 <- Consul (Service Discovery)
-    http://localhost:5001/api <- CatalogsAPI (.NET Core 3.0)
-    http://localhost:5002/api <- EmployeesAPI (.NET Core 3.0)
+    http://localhost:5001/api <- CatalogsAPI (.NET 6.0)
+    http://localhost:5002/api <- EmployeesAPI (.NET 6.0)
     -host: localhost -port: 1433 <- Base de Datos (SQL Server)
 
 # Tarea
