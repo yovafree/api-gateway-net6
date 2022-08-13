@@ -1,0 +1,42 @@
+{  
+    "Routes": [  
+      {  
+        "UseServiceDiscovery": true,   
+        "DownstreamPathTemplate": "/{url}",  
+        "DownstreamScheme": "http",  
+        "ServiceName": "catalogs-api",   
+        "LoadBalancerOptions": {   
+          "Type": "LeastConnection"  
+        },
+        "UpstreamPathTemplate": "/api/catalogs/{url}",  
+        "UpstreamHttpMethod": [ "GET", "POST" , "PUT", "PATCH", "OPTIONS" ],
+        "RoutesCaseSensitive": false,
+        "key": "catalogs",
+        "RateLimitOptions": {
+          "EnableRateLimiting": true,
+          "Period": "1s",
+          "PeriodTimespan": 1,
+          "Limit": 20
+        }
+      }
+    ],  
+    "GlobalConfiguration": {   
+      "ServiceDiscoveryProvider": {   
+        "Host": "localhost",  
+        "Port": 8500,  
+        "Type":"PollConsul",  
+        "PollingInterval": 100  
+      },
+      "RateLimitOptions": {
+        "DisableRateLimitHeaders": false,
+        "QuotaExceededMessage": "Customize Tips!",
+        "HttpStatusCode": 999,
+        "ClientIdHeader" : "Test"
+      },
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking":10,
+        "DurationOfBreak":5000,
+        "TimeoutValue":6000
+      }    
+    }  
+} 

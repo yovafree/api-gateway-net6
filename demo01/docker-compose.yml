@@ -1,0 +1,26 @@
+version: "3.4"
+services:
+    consul.sd:
+        image: consul
+        container_name: consul.sd
+        hostname: "consul.sd"
+        ports:
+            - "8500:8500"
+        networks:
+            testing_net:
+                ipv4_address: 172.29.1.2
+    sql.data:
+        image: crobles10/hr-database:20.0
+        container_name: sql.data
+        hostname: sql.data
+        ports:
+            - "1433:1433"
+        networks:
+            - testing_net
+
+networks:
+    testing_net:
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.29.0.0/16
