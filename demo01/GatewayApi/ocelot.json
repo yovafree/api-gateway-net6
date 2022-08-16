@@ -18,6 +18,25 @@
           "PeriodTimespan": 1,
           "Limit": 20
         }
+      },
+      {  
+        "UseServiceDiscovery": true,   
+        "DownstreamPathTemplate": "/{url}",  
+        "DownstreamScheme": "http",  
+        "ServiceName": "employees-api",   
+        "LoadBalancerOptions": {   
+          "Type": "LeastConnection"  
+        },
+        "UpstreamPathTemplate": "/api/employees/{url}",  
+        "UpstreamHttpMethod": [ "GET", "POST" , "PUT", "PATCH", "OPTIONS" ],
+        "RoutesCaseSensitive": false,
+        "key": "employees",
+        "RateLimitOptions": {
+          "EnableRateLimiting": true,
+          "Period": "1s",
+          "PeriodTimespan": 1,
+          "Limit": 20
+        }
       }
     ],  
     "GlobalConfiguration": {   
